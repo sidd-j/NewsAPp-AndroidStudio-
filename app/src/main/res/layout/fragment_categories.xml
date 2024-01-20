@@ -19,7 +19,8 @@
         android:orientation="vertical"
         android:theme="@style/BNAppTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/textView"
