@@ -36,14 +36,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="@+id/articleImageView">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/articleTitleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#BC000000"
+                android:background="?attr/colorSecondary"
                 android:elevation="20dp"
                 android:fontFamily="@font/notosansariff"
                 android:maxLines="3"
@@ -69,7 +68,7 @@
             android:id="@+id/articleDatePublish"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:background="#BC000000"
+            android:background="?attr/colorSecondary"
             android:elevation="20dp"
             android:maxLines="3"
             android:text="Date"
@@ -84,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:background="#BC000000"
+            android:background="?attr/colorSecondary"
             android:elevation="20dp"
             android:text="  hours ago"
             android:textSize="20sp"

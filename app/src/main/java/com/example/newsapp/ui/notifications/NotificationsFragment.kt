@@ -2,6 +2,8 @@ package com.example.newsapp.ui.notifications
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,8 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.newsapp.AutomobileNews
 import com.example.newsapp.FashionNews
 import com.example.newsapp.Politics
@@ -28,12 +32,17 @@ import java.net.URL
 import java.time.Duration
 import java.time.Instant
 import java.time.OffsetDateTime
+import java.util.Timer
+import java.util.TimerTask
 
 
 class NotificationsFragment : Fragment() {
     private val articlesList = mutableListOf<NewsArticle>()
     private lateinit var binding: FragmentCategoriesBinding
     private lateinit var adapter: NewsAdapter2
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var timer: Timer
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -87,6 +96,15 @@ class NotificationsFragment : Fragment() {
             val intent = Intent(requireContext(), FashionNews::class.java)
             startActivity(intent)
         }
+        startAutoScroll()
+
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener {
+            // Trigger refresh action when user swipes down
+            refreshNews()
+
+
+        }
 
 
         adapter = NewsAdapter2(articlesList)
@@ -102,7 +120,6 @@ class NotificationsFragment : Fragment() {
                 handleNewsApiResponse(response)
             } catch (e: Exception) {
                 e.printStackTrace()
-                // Handle the exception (e.g., show an error message)
             }
         }
     }
@@ -120,7 +137,9 @@ class NotificationsFragment : Fragment() {
     }
 
 
-
+    private fun refreshNews() {
+        loadNews()
+    }
 
     private fun handleNewsApiResponse(response: String) {
         val jsonObject = JSONObject(response)
@@ -160,5 +179,61 @@ class NotificationsFragment : Fragment() {
     }
 
 
+    private fun loadNews() {
+        // Show the refresh indicator
+        swipeRefreshLayout.isRefreshing = true
+
+        // Use lifecycleScope to launch a coroutine for fetching news
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val apiKey = "rZcS3xlAHpqx9P85OIrT9vvh08YLFQGb"
+                val response = fetchNewsArticles(apiKey)
+
+                // Clear the existing articles list before adding new ones
+                articlesList.clear()
+
+                // Handle the API response to populate the articlesList
+                handleNewsApiResponse(response)
+
+                // Delay for demonstration purposes (replace with your actual data loading logic)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // Handle the exception (e.g., show an error message)
+            } finally {
+                // Hide the refresh indicator after data loading is complete
+                swipeRefreshLayout.isRefreshing = false
+            }
+        }
+    }
+
+    private fun startAutoScroll() {
+        val handler = Handler(Looper.getMainLooper())
+        val update = Runnable {
+            val layoutManager = binding.horizontalRecyclerView.layoutManager as LinearLayoutManager
+            val maxScroll = layoutManager.itemCount
+            var currentPosition = layoutManager.findFirstVisibleItemPosition()
+
+            if (currentPosition == RecyclerView.NO_POSITION) {
+                currentPosition = 0
+            } else if (currentPosition < maxScroll - 1) {
+                currentPosition++
+            } else {
+                currentPosition = 0
+            }
+
+            binding.horizontalRecyclerView.smoothScrollToPosition(currentPosition)
+        }
+
+        timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post(update)
+            }
+        }, 10000, 3000) // Delay 3 seconds, repeat every 3 seconds
+    }
+
+    private fun stopAutoScroll() {
+        timer.cancel()
+    }
 
 }

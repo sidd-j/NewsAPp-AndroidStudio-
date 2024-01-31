@@ -63,6 +63,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.android.material:material:1.4.0")
     implementation ("com.google.android.material:material:1.5.0")
+    implementation ("org.mongodb:mongodb-driver-kotlin:1.7.2")
+
 
 
 }

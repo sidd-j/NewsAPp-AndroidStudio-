@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="?attr/colorSecondary"
         android:orientation="vertical"
         android:paddingTop="36dp"
         >
@@ -41,6 +41,7 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?attr/colorSecondary"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/articleImageView">
 
@@ -48,9 +49,8 @@
                 android:id="@+id/articleTitleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#BC000000"
+                android:background="?attr/colorSecondary"
                 android:layout_margin="15dp"
-                android:elevation="20dp"
                 android:maxLines="3"
                 android:text="Title"
                 android:textAlignment="center"
@@ -75,7 +75,7 @@
             android:id="@+id/articleDatePublish"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:background="#BC000000"
+            android:background="?attr/colorSecondary"
             android:elevation="20dp"
             android:maxLines="3"
             android:text="Date"
@@ -89,7 +89,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:background="#BC000000"
+            android:background="?attr/colorSecondary"
             android:elevation="20dp"
             android:text="  hours ago"
             android:textSize="20sp"

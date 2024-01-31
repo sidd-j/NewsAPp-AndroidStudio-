@@ -8,11 +8,12 @@
 
         <!-- Other theme attributes -->
         <item name="android:windowBackground">@drawable/graidient2</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="colorPrimary">@color/Primary_1</item>
+        <item name="colorPrimary">#AEDEFC</item>
         <item name="colorPrimaryVariant">@color/Primary_1</item>
         <item name="colorOnPrimary">@color/Primary_2</item>
-        <item name="colorSecondary">@color/teal_blue</item>
+        <item name="colorSecondary">#FFDFDF</item>
+        <item name="android:textColor">@color/textColorLight</item>
+
         <item name="colorSecondaryVariant">#FFB0E5</item>
         <item name="colorOnSecondary">#FFB1B1</item>
         <item name="android:statusBarColor">#C4FFCE</item>
@@ -30,6 +31,9 @@
         <item name="bgcolor">#FF9898</item>
         <item name="textcolor1">@color/black</item>
         <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/textColorLight</item>
+
+
         <!-- Other attributes for dark mode -->
     </style>
 

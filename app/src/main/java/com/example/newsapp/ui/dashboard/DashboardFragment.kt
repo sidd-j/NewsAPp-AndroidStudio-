@@ -1,6 +1,5 @@
 package com.example.newsapp.ui.dashboard
 
-import ImageSliderAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -9,13 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.Politics
 import com.example.newsapp.R
 import com.example.newsapp.ScienceNews

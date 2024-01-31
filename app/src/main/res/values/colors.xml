@@ -15,7 +15,8 @@
     <color name="font_color">#FFFFFF</color>
     <color name="bottomnav">#637373</color>
     <color name="pista">#A1EEBD</color>
-
+    <color name="textColorLight">#000000</color>
+    <color name="textColorDark">#FFFFFF</color>
 
 
 </resources>

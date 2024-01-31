@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 class NewsAdapter2(private val articles: MutableList<NewsArticle>) : RecyclerView.Adapter<NewsAdapter2.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_horizontal, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_slider, parent, false)
         return ViewHolder(view)
     }
 
